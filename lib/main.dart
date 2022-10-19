@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quiz/question.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,12 +13,12 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+  var _questionIndex = 0;
 
   void answerQuestion() {
     setState(() => {
-          questionIndex = questionIndex + 1,
-          if (questionIndex == 4) {questionIndex = 0},
+          _questionIndex++,
+          if (_questionIndex == 4) {_questionIndex = 0},
         });
 
     print('Answer chosen');
@@ -39,7 +40,7 @@ class MyAppState extends State<MyApp> {
           ),
           body: Column(
             children: [
-              Text(questions[questionIndex]),
+              Question(questions[_questionIndex]),
               ElevatedButton(
                 onPressed: answerQuestion,
                 child: Text('Answer 1'),
