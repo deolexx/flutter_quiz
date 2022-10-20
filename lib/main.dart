@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quiz/answer.dart';
 import 'package:flutter_quiz/question.dart';
 
 void main() {
@@ -8,14 +9,14 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() => {
           _questionIndex++,
           if (_questionIndex == 4) {_questionIndex = 0},
@@ -36,23 +37,15 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
+            titleTextStyle: TextStyle(fontSize: 28),
             title: Text('MyFirstApp'),
           ),
           body: Column(
             children: [
               Question(questions[_questionIndex]),
-              ElevatedButton(
-                onPressed: answerQuestion,
-                child: Text('Answer 1'),
-              ),
-              ElevatedButton(
-                onPressed: answerQuestion,
-                child: Text('Answer 2'),
-              ),
-              ElevatedButton(
-                onPressed: answerQuestion,
-                child: Text('Answer 3'),
-              ),
+              Answer(_answerQuestion),
+              Answer(_answerQuestion),
+              Answer(_answerQuestion),
             ],
           )),
     );
