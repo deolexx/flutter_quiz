@@ -18,8 +18,8 @@ class Quiz extends StatelessWidget {
           Question(
               questions[_questionIndex]['questionText'].toString()),
           //3 dots operator grab the each value from list and add to outer list
-          ...(questions[_questionIndex]['answers'] as List<String>)
-              .map((answer) => Answer(_answerQuestion, answer))
+          ...(questions[_questionIndex]['answers'] as List<Map<String,Object>>)
+              .map((answer) => Answer(()=>_answerQuestion(answer['score']), answer['text']))
               .toList()
         ],
       ),
