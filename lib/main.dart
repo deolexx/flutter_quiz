@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    const questions = [
       {
         'questionText': 'What\'s your favorite color?',
         'answers': ['Black', 'Red', 'Green', 'White'],
@@ -38,11 +38,11 @@ class _MyAppState extends State<MyApp> {
       },
       {
         'questionText': 'What\'s your favorite movie?',
-        'answers': ['Green Mile','Snatch','Titanic','9yards'],
+        'answers': ['Green Mile', 'Snatch', 'Titanic', '9yards'],
       },
       {
         'questionText': 'What\'s your favorite book?',
-        'answers': ['Dune','War and Peace','Shantaram','Game of Thrones'],
+        'answers': ['Dune', 'War and Peace', 'Shantaram', 'Game of Thrones'],
       },
     ];
 
@@ -55,7 +55,10 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: [
               Question(questions[_questionIndex]['questionText'].toString()),
-              ...(questions[_questionIndex]['answers'] as List<String>).map((answer) => Answer(_answerQuestion,answer)).toList()
+              //3 dots operator grab the each value from list and add to outer list
+              ...(questions[_questionIndex]['answers'] as List<String>)
+                  .map((answer) => Answer(_answerQuestion, answer))
+                  .toList()
             ],
           )),
     );
